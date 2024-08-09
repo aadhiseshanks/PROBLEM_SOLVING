@@ -4,6 +4,7 @@
 // RLDTS2
 // Sample Output:
 // 3 2 1 4 5 6
+
 import java.util.Scanner;
 
 public class Main {
