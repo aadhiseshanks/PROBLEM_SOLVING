@@ -1,4 +1,15 @@
-// Dynamic Array
+// Dynamic Array - HackerRank Problem
+// n = 2, n is Type, q = 5, q is Query, lastAnswer = 0
+// Sample Input:
+// 2 5
+// T X Y
+// 1 0 5 
+// 1 1 7
+// 1 0 3
+// 2 1 0
+// 2 1 1
+// Sample Output:
+// 7 3
 
 import java.util.ArrayList;
 import java.util.List;
