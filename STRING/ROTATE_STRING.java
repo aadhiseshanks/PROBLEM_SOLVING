@@ -10,16 +10,12 @@ class Main {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         int rot = sc.nextInt();
-        StringBuilder sb = new StringBuilder();
+        String result = "";
         for (char c : s.toCharArray()) {
-            if (Character.isLowerCase(c)) {
-                sb.append((char) ((c - 'a' + rot) % 26 + 'a'));
-            } else if (Character.isUpperCase(c)) {
-                sb.append((char) ((c - 'A' + rot) % 26 + 'A'));
-            } else {
-                sb.append(c);
-            }
+            char base = (Character.isUpperCase(c)) ? 'A':'a';
+            char shift = (char)((c - base + rot) % 26 + base);
+            result += shift;
         }
-        System.out.print(sb);
+        System.out.print(result);
     }
 }
