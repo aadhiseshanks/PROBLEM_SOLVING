@@ -1,32 +1,31 @@
 // Input: strs = ["flower","flow","flight"]
 // Output: "fl"
 
-import java.util.Arrays;
 import java.util.Scanner;
-
 class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         String str[] = s.split(" ");
-        Arrays.sort(str);
-        String first = str[0], last = str[str.length - 1];
+        if (str.length == 0) {
+            System.out.println("");
+        }
         String result = "";
-        int c = 0;
-        while(c < first.length() && c < last.length()) {
-            if(first.charAt(c) == last.charAt(c)) {
-                result += first.charAt(c);
-                c++;
+        for (int i = 0; i < str[0].length(); i++) {
+            char c = str[0].charAt(i);
+            boolean match = true;
+            for (int j = 1; j < str.length; j++) {
+                if (i >= str[j].length() || str[j].charAt(i) != c) {
+                    match = false;
+                    break;
+                }
             }
-            else {
+            if (match) {
+                result += c;
+            } else {
                 break;
             }
         }
-        if(result.isEmpty()) {
-            System.out.print("");
-        }
-        else {
-            System.out.print(result);
-        }
+        System.out.print(result);
     }
 }
