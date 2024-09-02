@@ -1,3 +1,4 @@
+// Leetcode - 42
 // Sample Input:
 // 6
 // 3 0 0 2 0 4
@@ -5,8 +6,14 @@
 // Sample Output:
 // 10
 
+// Sample Input:
+// 6
+// 4 2 0 3 2 5
+// Sample Output:
+// 9
+
 import java.util.Scanner;
-public class Main {
+class Main{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
@@ -14,32 +21,29 @@ public class Main {
         for(int i=0; i<size; i++) {
             height[i] = sc.nextInt();
         }
-        if (height == null || height.length == 0) {
-            System.out.println(0);
-        }
+        int left = 0;
+        int right = height.length - 1;
+        int maxLeft = 0;
+        int maxRight = 0;
+        int totalWater = 0;
 
-        int left = 0, right = height.length - 1;
-        int leftMax = 0, rightMax = 0;
-        int waterTrapped = 0;
-
-        while (left < right) {
+        while (left <= right) {
             if (height[left] < height[right]) {
-                if (height[left] >= leftMax) {
-                    leftMax = height[left];
+                if (height[left] >= maxLeft) {
+                    maxLeft = height[left];
                 } else {
-                    waterTrapped += leftMax - height[left];
+                    totalWater += maxLeft - height[left];
                 }
                 left++;
             } else {
-                if (height[right] >= rightMax) {
-                    rightMax = height[right];
+                if (height[right] >= maxRight) {
+                    maxRight = height[right];
                 } else {
-                    waterTrapped += rightMax - height[right];
+                    totalWater += maxRight - height[right];
                 }
                 right--;
             }
         }
-
-        System.out.println(waterTrapped);
+        System.out.print(totalWater);
     }
 }
