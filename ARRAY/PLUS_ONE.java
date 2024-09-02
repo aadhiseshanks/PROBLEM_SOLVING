@@ -30,17 +30,31 @@ class Main {
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
         int arr[] = new int[size];
-        for(int i=0; i<size; i++) {
+        for (int i = 0; i < size; i++) {
             arr[i] = sc.nextInt();
         }
+        
         int carry = 1;
         for (int i = size - 1; i >= 0; i--) {
-            int sum = arr[i] + carry;
-            arr[i] = sum % 10;
-            carry = sum / 10;
+            if (arr[i] < 9) {
+                arr[i]++;
+                carry = 0;
+                break;
+            }
+            arr[i] = 0;
         }
-        for(int i=0; i<size; i++) {
-            System.out.print(arr[i]+" ");
+        
+        if (carry == 1) {
+            int newdigit[] = new int[size + 1];
+            newdigit[0] = 1;
+            for (int i = 0; i < size + 1; i++) {
+                System.out.print(newdigit[i] + " ");
+            }
+        } 
+        else {
+            for (int i = 0; i < size; i++) {
+                System.out.print(arr[i] + " ");
+            }
         }
     }
 }
